@@ -1,0 +1,13 @@
+body {
+    background-color: white;
+}
+/* 
+.cardLayout {
+    display: flex;
+    flex-direction: row wrap;
+    flex-flow: space-around;
+} */
+
+.card {
+    margin: 5px;
+}

@@ -1,50 +1,49 @@
-////////////////////
-//  Dependencies  //
-////////////////////
-require("dotenv").config() // make env variables available
-const express = require("express")
-const middleware = require('./utils/middleware')
-const ExampleRouter = require('./controllers/example')
+/////////////////////////////////
+// import dependencies
+/////////////////////////////////
+// this allows us to load our env variables
+require('dotenv').config()
+const express = require('express')
+// We no longer need this reference because it lives in the fruit controller now
+// const Fruit = require('./models/fruit')
+// now that we're using controllers as they should be used
+// we need to require our routers
+const FruitRouter = require('./controllers/fruit')
 const UserRouter = require('./controllers/user')
-const User = require("./models/user")
-// SEE MORE DEPENDENCIES IN ./utils/middleware.js
-// user and resource routes linked in ./utils/middleware.js
+const HomeRouter = require('./controllers/home')
+const CommentRouter = require('./controllers/comment')
+const middleware = require('./utils/middleware')
 
-//////////////////////////////
-// Middleware + App Object  //
-//////////////////////////////
-const app = require("liquid-express-views")(express())
+////////////////////////////////////////////
+// Create our express application object
+////////////////////////////////////////////
+const app = require('liquid-express-views')(express())
 
+////////////////////////////////////////////
+// Middleware
+////////////////////////////////////////////
 middleware(app)
 
-////////////////////
-//    Routes      //
-////////////////////
+////////////////////////////////////////////
+// Routes
+////////////////////////////////////////////
+// register our routes here
+// send all '/fruits' routes to the Fruit Router
+app.use('/fruits', FruitRouter)
+app.use('/comments', CommentRouter)
+app.use('/user', UserRouter)
+app.use('/', HomeRouter)
 
-app.use('/auth', UserRouter)
-app.use('/examples', ExampleRouter)
-
-app.get('/', (req, res) => {
-    const { username, userId, loggedIn } = req.session
-	res.render('index.liquid', { loggedIn, username, userId })
-})
-
-app.get('/error', (req, res) => {
-	const error = req.query.error || 'This Page Does Not Exist'
-    const { username, loggedIn, userId } = req.session
-	res.render('error.liquid', { error, username, loggedIn, userId })
-})
-
-// if page is not found, send to error page
-app.all('*', (req, res) => {
-	res.redirect('/error')
-})
+// old home, now we're using homerouter
+// app.get('/', (req, res) => {
+//     res.send('your server is running, better go catch it')
+// })
 
 
-
-//////////////////////////////
-//      App Listener        //
-//////////////////////////////
-app.listen(process.env.PORT, () => {
-    console.log(`listening on port ${process.env.PORT}`)
+////////////////////////////////////////////
+// Server Listener
+////////////////////////////////////////////
+const PORT = process.env.PORT
+app.listen(PORT, () => {
+    console.log(`app is listening on port: ${PORT}`)
 })
