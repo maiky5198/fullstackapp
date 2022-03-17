@@ -8,7 +8,7 @@ const express = require('express')
 // const Fruit = require('./models/fruit')
 // now that we're using controllers as they should be used
 // we need to require our routers
-const FruitRouter = require('./controllers/fruit')
+const TripRouter = require('./controllers/trip')
 const UserRouter = require('./controllers/user')
 const HomeRouter = require('./controllers/home')
 const CommentRouter = require('./controllers/comment')
@@ -29,7 +29,7 @@ middleware(app)
 ////////////////////////////////////////////
 // register our routes here
 // send all '/fruits' routes to the Fruit Router
-app.use('/fruits', FruitRouter)
+app.use('/trips', TripRouter)
 app.use('/comments', CommentRouter)
 app.use('/user', UserRouter)
 app.use('/', HomeRouter)

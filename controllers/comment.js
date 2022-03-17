@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 // we need our Fruit MODEL because comments are ONLY a schema
 // so we'll run queries on fruits, and add in comments
-const Fruit = require('../models/fruit')
+const Trip = require('../models/trip')
 
 ////////////////////////////////////////////
 // Create router
@@ -18,7 +18,7 @@ const router = express.Router()
 ////////////////////////////////////////////
 // only need two routes for comments right now
 // POST -> to create a comment
-router.post('/:fruitId', (req, res) => {
+router.post('/:tripId', (req, res) => {
     const fruitId = req.params.fruitId
     console.log('first comment body', req.body)
     
@@ -27,16 +27,16 @@ router.post('/:fruitId', (req, res) => {
     req.body.author = req.session.userId
     console.log('updated comment body', req.body)
     // we'll find the fruit with the fruitId
-    Fruit.findById(fruitId)
-        .then(fruit => {
+    Trip.findById(tripId)
+        .then(trip => {
             // then we'll send req.body to the comments array
-            fruit.comments.push(req.body)
+            trip.comments.push(req.body)
             // save the fruit
-            return fruit.save()
+            return trip.save()
         })
-        .then(fruit => {
+        .then(trip => {
             // redirect
-            res.redirect(`/fruits/${fruit.id}`)
+            res.redirect(`/trips/${trip.id}`)
         })
         // or show an error if we have one
         .catch(error => {
@@ -49,28 +49,28 @@ router.post('/:fruitId', (req, res) => {
 // we'll use two params to make our life easier
 // first the id of the fruit, since we need to find it
 // then the id of the comment, since we want to delete it
-router.delete('/delete/:fruitId/:commId', (req, res) => {
+router.delete('/delete/:tripId/:commId', (req, res) => {
     // first we want to parse out our ids
-    const fruitId = req.params.fruitId
+    const tripId = req.params.fruitId
     const commId = req.params.commId
     // then we'll find the fruit
-    Fruit.findById(fruitId)
-        .then(fruit => {
-            const theComment = fruit.comments.id(commId)
+    Trip.findById(tripId)
+        .then(trip => {
+            const theComment = trip.comments.id(commId)
             // only delete the comment if the user who is logged in is the comment's author
             if ( theComment.author == req.session.userId) {
                 // then we'll delete the comment
                 theComment.remove()
                 // return the saved fruit
-                return fruit.save()
+                return trip.save()
             } else {
                 return
             }
 
         })
-        .then(fruit => {
+        .then(trip => {
             // redirect to the fruit show page
-            res.redirect(`/fruits/${fruitId}`)
+            res.redirect(`/trips/${tripId}`)
         })
         .catch(error => {
             // catch any errors

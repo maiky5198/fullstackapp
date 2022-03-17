@@ -4,26 +4,26 @@
 <!-- here we start our block content -->
 {% block content %}
     <div >
-        <h2 class="display-6">All Fruits</h2>
+        <h2 class="display-6">What location are you traveling to?</h2>
         <div class="row">
-            {% for fruit in fruits %}
+            {% for trip in trips %}
                 <div class="card" style="width: 18rem;">
                     <!-- card header -> name of fruit -->
                     <!-- card body -> ready to eat as title, color as text-->
-                    <h5 class="card-header">{{fruit.name}}</h5>
+                    <h5 class="card-header">{{trip.name}}</h5>
                     <div class="card-body">
                         <h5 class="card-title">
-                            {% if fruit.readyToEat %}
+                            {% if trip.readyToEat %}
                                 Ripe
                             {% else %}
                                 Not Ripe
                             {% endif %}
                         </h5>
                         <p class="card-text"> 
-                            The color of this {{fruit.name}} is {{ fruit.color }}
+                            The color of this {{trip.name}} is {{ trip.color }}
                         </p>
-                        <a href="/fruits/{{ fruit.id }}" class="btn btn-info">
-                            View {{ fruit.name }}
+                        <a href="/trips/{{ trip.id }}" class="btn btn-info">
+                            View {{ trip.name }}
                         </a>
                     </div>
                 </div>

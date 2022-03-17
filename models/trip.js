@@ -17,9 +17,9 @@ const User = require('./user')
 const { Schema, model } = mongoose
 
 // make our fruits schema
-const fruitSchema = new Schema({
-    name: { type: String },
-    color: { type: String },
+const tripSchema = new Schema({
+    trip: { type: String },
+    date: { type: String },
     readyToEat: { type: Boolean },
     // instead of username, we're going to use a reference
     // username: { type: String }
@@ -34,9 +34,9 @@ const fruitSchema = new Schema({
 }, { timestamps: true })
 
 // make our fruit model
-const Fruit = model("Fruit", fruitSchema)
+const Trip = model("Trip", tripSchema)
 
 /////////////////////////////////
 // Export our Model
 /////////////////////////////////
-module.exports = Fruit
+module.exports = Trip
