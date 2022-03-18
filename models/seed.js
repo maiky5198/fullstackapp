@@ -2,7 +2,7 @@
 // Import Dependencies
 ///////////////////////////////////////
 const mongoose = require('./connection')
-const Fruit = require('./fruit')
+const Trip = require('./fruit')
 
 ///////////////////////////////////////////
 // Seed Code
