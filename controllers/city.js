@@ -39,34 +39,26 @@ const key = process.env.apikey
 const getWeather = async (id) => {
 	const base = 'http://dataservice.accuweather.com/forecasts/v1/daily/15day/'
 	const query = `${id}?apikey=${key}`;
-    const data = data
-	return await axios.get(base + query + data);
-	return (data);
-
-	
-	
+	return await axios.get(base + query);
+		
 };
 //get city
 const getCity = async (city) => {
     const base = 'http://dataservice.accuweather.com/locations/v1/cities/search'
     const query = `?apikey=${key}&q=${city}`;
-    const data =  data;
-    return await axios.get(base + query + data);
-    
-	
-
-
+    return await axios.get(base + query);
   
 };
 // index city weather 
 router.get('/', async (req, res) => {
-	Promise.all(getCity('349727'))
+	getCity('Los Angeles')
 	.then(data => {
-		return getWeather(data.Key);
-	}) .then(data)
-        console.log(data) 
+		console.log(`this is return from get city new york`, data)
+		// return getWeather;
+	}) .then(data => {
 		res.render('trips/cities')
-   
+
+	})
 	})
 
 module.exports = router
