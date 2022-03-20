@@ -13,17 +13,17 @@
                     <h5 class="card-header">{{trip.name}}</h5>
                     <div class="card-body">
                         <h5 class="card-title">
-                            {% if trip.readyToEat %}
-                                Ripe
+                            {% if trip.recommend %}
+                                Recommend
                             {% else %}
-                                Not Ripe
+                                Don't Recommend
                             {% endif %}
                         </h5>
                         <p class="card-text"> 
-                            The color of this {{trip.name}} is {{ trip.color }}
+                            Loaction is {{ trip.city }}
                         </p>
                         <a href="/trips/{{ trip.id }}" class="btn btn-info">
-                            View {{ trip.name }}
+                            View this Trip
                         </a>
                     </div>
                 </div>

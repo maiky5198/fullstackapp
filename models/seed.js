@@ -2,7 +2,7 @@
 // Import Dependencies
 ///////////////////////////////////////
 const mongoose = require('./connection')
-const Trip = require('./fruit')
+const Trip = require('./trip')
 
 ///////////////////////////////////////////
 // Seed Code
@@ -12,21 +12,21 @@ const db = mongoose.connection;
 
 db.on('open', () => {
 	// array of starter fruits
-	const startFruits = [
-		{ name: 'Orange', color: 'orange', readyToEat: false },
-		{ name: 'Grape', color: 'purple', readyToEat: false },
-		{ name: 'Banana', color: 'orange', readyToEat: false },
-		{ name: 'Strawberry', color: 'red', readyToEat: false },
-		{ name: 'Coconut', color: 'brown', readyToEat: false },
+	const startTrips = [
+		{ name: 'New Years 2019', city: 'New York', recommend: false },
+		{ name: 'Summer 2018', city: 'France', recommend: false },
+		{ name: 'First trip to Aruba', city: 'Aruba', recommend: false },
+		{ name: 'Last Year', city: 'Texas', recommend: false},
+		{ name: 'new years 2020', city: 'New York', recommend: false },
 	]
 
 	// when we seed data, there are a few steps involved
 	// delete all the data that already exists(will only happen if data exists)
-	Fruit.remove({})
-        .then(deletedFruits => {
-		    console.log('this is what remove returns', deletedFruits)
+	Trip.remove({})
+        .then(deletedTrips => {
+		    console.log('this is what remove returns', deletedTrips)
 		    // then we create with our seed data
-            Fruit.create(startFruits)
+            Trip.create(startTrips)
                 .then((data) => {
                     console.log('Here are the new seed fruits', data)
                     db.close()

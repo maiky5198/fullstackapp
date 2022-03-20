@@ -19,7 +19,7 @@ const router = express.Router()
 // only need two routes for comments right now
 // POST -> to create a comment
 router.post('/:tripId', (req, res) => {
-    const fruitId = req.params.fruitId
+    const tripId = req.params.tripId
     console.log('first comment body', req.body)
     
     // we'll adjust req.body to include an author
@@ -51,7 +51,7 @@ router.post('/:tripId', (req, res) => {
 // then the id of the comment, since we want to delete it
 router.delete('/delete/:tripId/:commId', (req, res) => {
     // first we want to parse out our ids
-    const tripId = req.params.fruitId
+    const tripId = req.params.tripId
     const commId = req.params.commId
     // then we'll find the fruit
     Trip.findById(tripId)

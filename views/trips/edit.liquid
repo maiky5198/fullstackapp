@@ -3,29 +3,29 @@
 <div class="container-sm">
     <form action="/trips/{{ trip.id }}?_method=PUT" method="POST">
         <fieldset>
-            <legend>Edit New Fruit</legend>
+            <legend>Edit Trip</legend>
             <label class="form-label">Name:</label>
             <input 
                 type="text" 
                 name="name" 
-                placeholder="enter fruit name"
+                placeholder="enter trip name"
                 class="form-control"
                 value="{{ trip.name }}"
             >
-            <label class="form-label">Color:</label>
+            <label class="form-label">City:</label>
             <input 
                 type="text" 
-                name="color" 
-                placeholder="enter fruit color"
+                name="city" 
+                placeholder="enter city"
                 class="form-control"
-                value="{{ trip.color }}"
+                value="{{ trip.city }}"
             >
-            <label class="form-label">Ready To Eat: </label>
+            <label class="form-label">Recommend: </label>
             <input 
                 type="checkbox" 
-                name="readyToEat"
+                name="recommend"
                 class="form-check-input"
-                {% if trip.readyToEat %}
+                {% if trip.recommend %}
                     checked
                 {% endif %}
             >

@@ -18,8 +18,9 @@ const { Schema, model } = mongoose
 
 // make our fruits schema
 const tripSchema = new Schema({
-    tripname: { type: String },
+    name: { type: String },
     city: {type: String},
+    recommend: { type: Boolean},
     // date: { type: Date },
     
     // instead of username, we're going to use a reference

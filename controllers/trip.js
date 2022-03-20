@@ -80,7 +80,7 @@ router.post('/', (req, res) => {
 	// we can check AND set this property in one line of code
 	// first part sets the property name
 	// second is a ternary to set the value
-	req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
+	req.body.recommend = req.body.recommend === 'on' ? true : false
 	// console.log('this is the fruit to create', req.body)
 	// now we're ready for mongoose to do its thing
 	// now that we have user specific fruits, we'll add the username to the fruit created
@@ -124,12 +124,12 @@ router.put('/:id', (req, res) => {
 	// get the id
 	const tripId = req.params.id
 	// check and assign the readyToEat property with the correct value
-	req.body.readyToEat = req.body.readyToEat === 'on' ? true : false
+	req.body.recommend = req.body.recommend === 'on' ? true : false
 	// tell mongoose to update the fruit
 	Trip.findByIdAndUpdate(tripId, req.body, { new: true })
 		// if successful -> redirect to the fruit page
 		.then((trip) => {
-			console.log('the updated fruit', trip)
+			console.log('the updated trip', trip)
 
 			res.redirect(`/trips/${trip.id}`)
 		})
@@ -146,7 +146,7 @@ router.get('/:id', (req, res) => {
 		.populate('comments.author')
 		// once found, we can render a view with the data
 		.then((trip) => {
-			console.log('the fruit we got\n', trip)
+			console.log('the trip we got\n', trip)
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			const userId = req.session.userId
