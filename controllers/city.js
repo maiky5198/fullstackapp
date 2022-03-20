@@ -34,20 +34,45 @@ router.use((req, res, next) => {
 
 const key = process.env.apikey
 
+//get weather
+
+const getWeather = async (id) => {
+	const base = 'http://dataservice.accuweather.com/forecasts/v1/daily/15day/'
+	const query = `${id}?apikey=${key}`;
+    const data = data
+	return await axios.get(base + query + data);
+	return (data);
+
+	
+	
+};
+//get city
 const getCity = async (city) => {
     const base = 'http://dataservice.accuweather.com/locations/v1/cities/search'
     const query = `?apikey=${key}&q=${city}`;
+    const data =  data;
+    return await axios.get(base + query + data);
+    
+	
 
-    return await axios.get(base + query);
+
   
 };
-// index ALL fruits route
+// index city weather 
 router.get('/', async (req, res) => {
-	Promise.resolve(getCity('newyork')).then(city => {
-        console.log(city.data[0]) 
-        
-    })
-    // // find the fruits
+	Promise.all(getCity('349727'))
+	.then(data => {
+		return getWeather(data.Key);
+	}) .then(data)
+        console.log(data) 
+		res.render('trips/cities')
+   
+	})
+
+module.exports = router
+
+
+ // // find the fruits
 	// City.find({})
 	// 	// then render a template AFTER they're found
 	// 	.then((cities) => {
@@ -62,6 +87,3 @@ router.get('/', async (req, res) => {
 	// 		console.log(error)
 	// 		res.json({ error })
 	// 	})
-})
-
-module.exports = router

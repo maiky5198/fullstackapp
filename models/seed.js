@@ -11,7 +11,7 @@ const Trip = require('./trip')
 const db = mongoose.connection;
 
 db.on('open', () => {
-	// array of starter fruits
+	// array of starter trips
 	const startTrips = [
 		{ name: 'New Years 2019', city: 'New York', recommend: false },
 		{ name: 'Summer 2018', city: 'France', recommend: false },
@@ -28,7 +28,7 @@ db.on('open', () => {
 		    // then we create with our seed data
             Trip.create(startTrips)
                 .then((data) => {
-                    console.log('Here are the new seed fruits', data)
+                    console.log('Here are the new seed trips', data)
                     db.close()
                 })
                 .catch(error => {
