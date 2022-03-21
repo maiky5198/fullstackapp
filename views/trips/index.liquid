@@ -3,7 +3,8 @@
 {% layout 'layout.liquid'%}
 <!-- here we start our block content -->
 {% block content %}
-    <div >
+<body>
+<div id="backgroundindex">
         <h2 class="display-6">What location are you traveling to?</h2>
         <div class="row">
             {% for trip in trips %}
@@ -30,4 +31,5 @@
             {% endfor %}
         </div>
     </div>
+    </body>
 {% endblock %}

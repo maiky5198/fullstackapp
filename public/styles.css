@@ -1,5 +1,14 @@
 body {
-    background-color: white;
+    background-image: linear-gradient(
+    45deg,
+    #0277bd,
+    transparent 50%,
+    transparent
+  );
+  float: left;
+  height: 300px;
+  width: 800px;
+    
 }
 
 .cardLayout {
@@ -11,3 +20,8 @@ body {
 .card {
     margin: 5px;
 }
+
+#backgroundindex {
+    background-color: white;
+}
+

@@ -14,6 +14,7 @@
  // Create router
  ////////////////////////////////////////////
  const router = express.Router()
+ const key = process.env.apikey2
 
  router.use((req, res, next) => {
 	// checking the loggedin boolean of our session
@@ -37,7 +38,7 @@
      // once found, we can render a view with the data
 
          // URL to get the data from - put zip in the link to be replaced by each course
-         const requestURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=imperial&appid=b5539cef167efdde6c8a83243e7138f2`
+         const requestURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=imperial&appid=${key}`
          fetch(requestURL)
          .then((apiResponse) => {
                  console.log('weather data', zip)
@@ -48,7 +49,7 @@
                  const weather = jsonData
                  res.render('trips/weathershow', { weather })   
                  })
-         // if there is an error, show that instead
+         // if there is an error
          .catch((error) => {
  			console.log(error)
  			res.json({ error })
