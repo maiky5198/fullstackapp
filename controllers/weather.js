@@ -32,7 +32,7 @@
 
  router.post('/', (req, res) => {
  	// first, we need to get the id
-     const zip = req.body.zip
+     const zip= req.body.zip
  	// then we can find a course by its id
      // once found, we can render a view with the data
 
