@@ -51,31 +51,18 @@ const getCity = async (city) => {
 };
 // index city weather 
 router.get('/', async (req, res) => {
-	getCity('Los Angeles')
-	.then(data => {
-		console.log(`this is return from get city new york`, data)
-		// return getWeather;
+	getCity('Los Angeles').then(data => {
+	console.log(`this is return from get city `, data.data[0].Key)
+		//  return getWeather(data.Key);
 	}) .then(data => {
+		// console.log(data[0])
 		res.render('trips/cities')
+	})
+	.catch(err => console.log(err));
+    })
 
-	})
-	})
+
+
 
 module.exports = router
 
-
- // // find the fruits
-	// City.find({})
-	// 	// then render a template AFTER they're found
-	// 	.then((cities) => {
-	// 		const username = req.session.username
-	// 		const loggedIn = req.session.loggedIn
-	// 		// console.log(fruits)
-	// 		res.render('cities/index', { cities, username, loggedIn })
-    //         console.log(data);
-    //     })
-	// 	// show an error if there is one
-	// 	.catch((error) => {
-	// 		console.log(error)
-	// 		res.json({ error })
-	// 	})

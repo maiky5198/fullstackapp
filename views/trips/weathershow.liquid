@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Weather App</title>
+ </head>
+ <body>
+     <h1>Weather App</h1>
+     <form action="/weather" method = "POST">
+         <input type="text" name="zip" placeholder="Enter your zip code">
+         <input type="submit" >
+     </form>
+     <div class="weather">
+         <h3>City: {{ weather.name }}</h3>
+         {% if weather.main.temp > 90 %}
+         <style>
+             .temp {
+                 color: red;
+             }
+         </style>
+           {% elsif weather.main.temp < 40 %}
+         <style>
+             .temp {
+                 color: blue;
+             }
+         </style>
+         {% endif %}
+         <h3 class = 'temp'>Current Temperature: {{ weather.main.temp }}</h3>
+         <h3>Weather Description: {{ weather.weather[0].description }}</h3>
+         <h3>Minimum Temperature: {{ weather.main.temp_min }}</h3>
+         <h3>Maximum Temperature: {{ weather.main.temp_max }}</h3>
+     </div>
+ </body>
+ </html>  

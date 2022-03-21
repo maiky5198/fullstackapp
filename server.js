@@ -11,6 +11,7 @@ const express = require('express')
 // we need to require our routers
 // const CityRouter = require('./controllers/city')
 const TripRouter = require('./controllers/trip')
+const WeatherRouter = require('./controllers/weather')
 const UserRouter = require('./controllers/user')
 const CityRouter = require('./controllers/city')
 const HomeRouter = require('./controllers/home')
@@ -34,6 +35,7 @@ middleware(app)
 // send all '/fruits' routes to the Fruit Router
 
 app.use('/trips', TripRouter)
+app.use('/weather', WeatherRouter)
 app.use('/cities', CityRouter)
 app.use('/comments', CommentRouter)
 app.use('/user', UserRouter)

@@ -107,7 +107,7 @@ router.get('/:id/edit', (req, res) => {
 	Trip.findById(tripId)
 		// -->render if there is a fruit
 		.then((trip) => {
-			console.log('edit froot', trip)
+			console.log('edit trip', trip)
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			res.render('trips/edit', { trip, username, loggedIn })
