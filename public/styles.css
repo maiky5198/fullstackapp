@@ -6,8 +6,8 @@ body {
     transparent
   );
   float: left;
-  height: 300px;
-  width: 800px;
+  height: 800px;
+  width: 1500px;
     
 }
 
@@ -19,9 +19,5 @@ body {
 
 .card {
     margin: 5px;
-}
-
-#backgroundindex {
-    background-color: white;
 }
 

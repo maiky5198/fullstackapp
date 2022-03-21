@@ -32,7 +32,6 @@
  })
 
  router.post('/', (req, res) => {
- 	// first, we need to get the id
      const zip = req.body.zip
  	// then we can find a course by its id
      // once found, we can render a view with the data
@@ -41,13 +40,13 @@
          const requestURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=imperial&appid=${key}`
          fetch(requestURL)
          .then((apiResponse) => {
-                 console.log('weather data', zip)
+                 console.log(`weather data`, zip)
                  return apiResponse.json();
              })
              .then((jsonData) => {
-                 console.log("here is the weather data", jsonData);
+                 console.log(`here is the weather data`, jsonData);
                  const weather = jsonData
-                 res.render('trips/weathershow', { weather })   
+                 res.render(`trips/weathershow`, { weather })   
                  })
          // if there is an error
          .catch((error) => {
