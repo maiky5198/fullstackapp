@@ -40,6 +40,7 @@ app.use('/cities', CityRouter)
 app.use('/comments', CommentRouter)
 app.use('/user', UserRouter)
 app.use('/', HomeRouter)
+app.use('/', TestRouter)
 
 // old home, now we're using homerouter
 // app.get('/', (req, res) => {

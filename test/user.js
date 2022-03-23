@@ -1,3 +1,13 @@
+
+
+const bcrypt = require('bcrypt')
+const User = require('../models/user')
+
+const chai = require('chai')
+const chaiHttp = require('..models/user')
+chai.should()
+
+
 ////////////////////////////////////////////
 // Import Dependencies
 ////////////////////////////////////////////
@@ -22,6 +32,7 @@ router.get('/', (req, res) => {
 // two sign up routes
 // get to render the signup form
 router.get('/signup', (req, res) => {
+    chai.request(server)
     res.render('users/signup')
 })
 // post to send the signup info
