@@ -34,9 +34,9 @@
  router.post('/', (req, res) => {
      const zip = req.body.zip
  	// then we can find a course by its id
-     // once found, we can render a view with the data
+     // we can now render a view with the data
 
-         // URL to get the data from - put zip in the link to be replaced by each course
+         // URL to get the data 
          const requestURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=imperial&appid=${key}`
          fetch(requestURL)
          .then((apiResponse) => {
